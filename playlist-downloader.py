@@ -53,8 +53,11 @@ if confirmation.lower() in ['y', '']:
         if vid.default_filename in directory_contents:
             print('Skipping {}'.format(vid.default_filename))
             print('************ {a}/{b} downloads completed ************'.format(a=str(i), b=str(video_count)))
+            i+=1
             continue
         else:
             print('Downloading {}'.format(vid.default_filename))
             vid.download(args.destination)
-            print('Done')
+            print('************ {a}/{b} downloads completed ************'.format(a=str(i), b=str(video_count)))
+            i+=1
+print('\n************    ALL VIDEOS DOWNLOADED    ************')
