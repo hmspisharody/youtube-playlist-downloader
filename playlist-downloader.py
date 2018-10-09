@@ -44,12 +44,15 @@ confirmation = input('You are about to download {} videos to {}\nWould you like 
     len(video_urls), os.path.abspath(args.destination)))
 
 if confirmation.lower() in ['y', '']:
+    video_count = len(video_urls)
+    i=1
     for u in video_urls:
         yt = pytube.YouTube(u)
         vid = yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first() # grab the highest resolution mp4 file
 
         if vid.default_filename in directory_contents:
             print('Skipping {}'.format(vid.default_filename))
+            print('************ {a}/{b} downloads completed ************'.format(a=str(i), b=str(video_count)))
             continue
         else:
             print('Downloading {}'.format(vid.default_filename))
