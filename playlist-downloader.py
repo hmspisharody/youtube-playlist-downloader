@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os, sys, time
 import argparse
-from urllib2 import urlopen
+from urllib.request import urlopen
 
 import pytube  # pip install pytube
 
